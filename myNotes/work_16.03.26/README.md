@@ -101,8 +101,8 @@ curl http://localhost:8080
 
 📸 **Скриншоты**:
 ```
-[Apache: docker ps](img/image1.jpg)
-[Apache: браузер](img/image2.jpg)
+[Apache:docker ps](img/image1.jpg)
+[Apache:браузер](img/image2.jpg)
 ```
 
 🔗 [Подробнее](./Apache.md)
