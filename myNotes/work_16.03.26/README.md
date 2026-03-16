@@ -1,92 +1,22 @@
-Понял! Вижу проблему — **скриншоты внутри блоков кода** (```), поэтому они не отображаются. Нужно убрать обратные кавычки вокруг изображений.
-
-Вот **исправленный README.md** с правильным форматированием скриншотов:
-
-```markdown
 # 🐳 Docker Labs: Готовые образы контейнеров
 
 > 📚 **Самостоятельная работа**: Создание контейнеров из готовых Docker-образов  
-> 👤 **Студент**: `[Козлов Артем]`  
-> 📅 **Дата выполнения**: `[16.03.26]`  
+> 👤 **Студент**: `Сысоева Анна`  
+> 📅 **Дата**: `16.03.26`  
 
----
 
-## 📋 Оглавление
 
-<details>
-<summary>🔽 Развернуть список заданий</summary>
+## ▍01. Apache 🌐
 
-1. [🎯 Цель работы](#-цель-работы)
-2. [⚙️ Подготовка окружения](#-подготовка-окружения)
-3. [📦 Выполненные задания](#-выполненные-задания)
-   - [01. Apache](#01-apache)
-   - [02. Welcome to Docker](#02-welcome-to-docker)
-   - [03. Portainer](#03-portainer)
-   - [04. Speedtest](#04-speedtest)
-   - [05. cAdvisor](#05-cadvisor)
-   - [06. MySQL](#06-mysql)
-   - [07. PostgreSQL](#07-postgresql)
-   - [08. MongoDB](#08-mongodb)
-   - [09. Adminer](#09-adminer)
-   - [10. Jira](#10-jira)
-   - [11. Pcb2gcode](#11-pcb2gcode)
-   - [12. Статический сайт на Apache](#12-статический-сайт-на-apache)
-   - [13. Ubuntu](#13-ubuntu)
-   - [14. Metasploitable2](#14-metasploitable2)
-   - [15. Alt Linux](#15-alt-linux)
-   - [16. Python](#16-python)
-   - [17. Node.js](#17-nodejs)
-   - [18. Redis](#18-redis)
-   - [19. HTTP-сервер](#19-http-сервер)
-   - [20. Файловый обменник](#20-файловый-обменник)
-4. [🧹 Очистка ресурсов](#-очистка-ресурсов)
-5. [✅ Выводы](#-выводы)
 
-</details>
 
----
-
-## 🎯 Цель работы
-
-- Научиться работать с готовыми Docker-образами из Docker Hub
-- Освоить базовые команды управления контейнерами
-- Настроить проброс портов и монтирование томов
-- Документировать процесс выполнения лабораторных работ
-
----
-
-## ⚙️ Подготовка окружения
-
+**Команды:**
 ```bash
-# Проверка установки Docker
-docker --version
-docker compose version
-
-# Создание рабочей директории
-mkdir -p ~/DockerLabs && cd ~/DockerLabs
-
-# Авторизация в Docker Hub (опционально)
-docker login
-```
-
-> ⚠️ **Важно**: Не используйте русские имена, пробелы и спецсимволы в путях к файлам!
-
----
-
-## 📦 Выполненные задания
-
----
-
-### 01. Apache 🌐
-
-> Официальный образ: `httpd`
-
-```bash
-# Поиск и скачивание образа
+# Поиск и загрузка
 docker search httpd
 docker pull httpd:latest
 
-# Запуск контейнера
+# Запуск
 docker run -d -p 8080:80 --name apache-lab httpd:latest
 
 # Проверка
@@ -94,48 +24,44 @@ docker ps
 curl http://localhost:8080
 ```
 
-| Параметр | Значение |
-|----------|----------|
-| Имя контейнера | `apache-lab` |
-| Порт хоста | `8080` |
-| Порт контейнера | `80` |
-| Образ | `httpd:latest` |
+**Параметры:**
 
-📸 **Скриншоты**:
+| Поле | Значение |
+|------|----------|
+| `--name` | `apache-lab` |
+| `-p` | `8080:80` |
+| `образ` | `httpd:latest` |
 
-![Apache: docker ps](img/image1.jpg)
+📸 **Результат**:  
+![Apache: docker ps](img/image1.jpg)  
 ![Apache: браузер](img/image2.jpg)
 
 ---
 
-### 02. Welcome to Docker 👋
+## ▍02. Welcome to Docker 👋
 
-> Образ: `docker/whalesay`
 
+
+**Команды:**
 ```bash
-# Скачивание и запуск
 docker pull docker/whalesay:latest
 docker run --rm docker/whalesay cowsay "Hello Docker Labs!"
-
-# С кастомным сообщением
 docker run --rm docker/whalesay cowsay "MFUA Student 2026"
 ```
 
-📸 **Скриншот**:
-
+📸 **Результат**:  
 ![Whalesay output](img/image3.jpg)
 
 ---
 
-### 03. Portainer 🎛️
+## ▍03. Portainer 🎛️
 
-> Веб-интерфейс для управления Docker
 
+
+**Команды (Windows):**
 ```bash
-# Создание тома для данных
 docker volume create portainer_data
 
-# Запуск Portainer (Windows)
 docker run -d -p 9000:9000 \
   --name portainer \
   --restart=always \
@@ -144,22 +70,24 @@ docker run -d -p 9000:9000 \
   portainer/portainer-ce:latest
 ```
 
-| Доступ | Значение |
-|--------|----------|
-| Веб-интерфейс | `http://localhost:9000` |
-| Первый вход | Создать аккаунт администратора |
+**Доступ:**
 
-📸 **Скриншоты**:
+| Параметр | Значение |
+|----------|----------|
+| 🔗 URL | `http://localhost:9000` |
+| 👤 Первый вход | Создать аккаунт |
 
-![Portainer: вход](img/image4.jpg)
+📸 **Результат**:  
+![Portainer: вход](img/image4.jpg)  
 ![Portainer: дашборд](img/image5.jpg)
 
 ---
 
-### 04. Speedtest 🚀
+## ▍04. Speedtest 🚀
 
-> Образ: `henrywhitaker3/speedtest-tracker`
 
+
+**Команды:**
 ```bash
 docker run -d \
   -p 8765:80 \
@@ -169,33 +97,32 @@ docker run -d \
   henrywhitaker3/speedtest-tracker:latest
 ```
 
-🔗 Доступ: `http://localhost:8765`
+🔗 **Доступ**: `http://localhost:8765`
 
-📸 **Скриншот**:
-
+📸 **Результат**:  
 ![Speedtest интерфейс](img/6.jpg)
 
 ---
 
-### 05. cAdvisor 📊
+## ▍05. cAdvisor 📊
 
-> Мониторинг ресурсов контейнеров
 
-> ⚠️ **Примечание**: cAdvisor не работает на Windows нативно
 
+**Команда:**
 ```bash
-# Альтернатива для Windows - Docker Stats
 docker stats --no-stream
 ```
 
-📸 **Скриншот**:
-
+📸 **Результат**:  
 ![Docker Stats](img/7.jpg)
 
 ---
 
-### 06. MySQL 🗄️
+## ▍06. MySQL 🗄️
 
+
+
+**Команды:**
 ```bash
 docker run -d \
   --name mysql-lab \
@@ -207,18 +134,20 @@ docker run -d \
   --restart=unless-stopped \
   mysql:8.0
 
-# Подключение для проверки
+# Проверка подключения
 docker exec -it mysql-lab mysql -u labuser -p
 ```
 
-📸 **Скриншот**:
-
+📸 **Результат**:  
 ![MySQL: подключение](img/8.jpg)
 
 ---
 
-### 07. PostgreSQL 🐘
+## ▍07. PostgreSQL 🐘
 
+
+
+**Команды:**
 ```bash
 docker run -d \
   --name postgres-lab \
@@ -234,14 +163,15 @@ docker run -d \
 docker exec -it postgres-lab psql -U labuser -d labdb -c "\dt"
 ```
 
-📸 **Скриншот**:
-
+📸 **Результат**:  
 ![PostgreSQL: консоль](img/9.jpg)
 
 ---
 
-### 08. MongoDB (NoSQL) 🍃
+## ▍08. MongoDB 🍃
 
+
+**Команды:**
 ```bash
 docker run -d \
   --name mongo-lab \
@@ -252,18 +182,20 @@ docker run -d \
   --restart=unless-stopped \
   mongo:7.0
 
-# Подключение через mongosh
+# Подключение
 docker exec -it mongo-lab mongosh -u admin -p AdminPass789! --authenticationDatabase admin
 ```
 
-📸 **Скриншот**:
-
+📸 **Результат**:  
 ![MongoDB: shell](img/10.png)
 
 ---
 
-### 09. Adminer (замена phpMyAdmin) 🔧
+## ▍09. Adminer 🔧
 
+
+
+**Команды:**
 ```bash
 docker run -d \
   --name adminer-lab \
@@ -274,22 +206,23 @@ docker run -d \
   adminer:latest
 ```
 
-| Параметр | Значение |
-|----------|----------|
-| Веб-интерфейс | `http://localhost:8082` |
-| MySQL хост | `db:3306` |
-| PostgreSQL хост | `pg:5432` |
+**Подключение:**
 
-📸 **Скриншот**:
+| База | Хост | Порт |
+|------|------|------|
+| MySQL | `db` | `3306` |
+| PostgreSQL | `pg` | `5432` |
 
+📸 **Результат**:  
 ![Adminer: подключение к БД](img/11.jpg)
 
 ---
 
-### 10. Jira 🎫
+## ▍10. Jira 🎫
 
-> ⚠️ Требует много ресурсов (~2 ГБ ОЗУ)
 
+
+**Команды:**
 ```bash
 docker run -d \
   --name jira-lab \
@@ -299,20 +232,18 @@ docker run -d \
   atlassian/jira-software:latest
 ```
 
-> ⏱ Первый запуск может занять 5-10 минут
+🔗 **Доступ**: `http://localhost:8083`
 
-🔗 Доступ: `http://localhost:8083`
-
-📸 **Скриншот**:
-
+📸 **Результат**:  
 ![Jira: стартовая страница](img/12.jpg)
 
 ---
 
-### 11. Pcb2gcode 🔌
+## ▍11. Pcb2gcode 🔌
 
-> Инструмент для генерации G-code для PCB
 
+
+**Команда (теоретическая):**
 ```bash
 docker run --rm \
   -v $(pwd)/pcb_files:/input \
@@ -321,23 +252,15 @@ docker run --rm \
   pcb2gcode --front /input/front.gbr --output-dir /output
 ```
 
-📁 Структура томов:
-```
-DockerLabs/
-├── pcb_files/     # Исходные Gerber-файлы
-└── output/        # Сгенерированный G-code
-```
-
-> ⚠️ **Примечание**: Образ требует регистрации или недоступен
-
-📸 **Скриншот**:
-
-*Задание выполнено частично - образ недоступен*
+📸 **Статус**: *Задание выполнено частично — образ требует авторизации*
 
 ---
 
-### 12. Статический сайт на Apache 🌐
+## ▍12. Статический сайт на Apache 🌐
 
+
+
+**Команды:**
 ```bash
 # Создание контента
 mkdir -p ~/DockerLabs/site-content
@@ -353,16 +276,17 @@ docker run -d \
   httpd:latest
 ```
 
-🔗 Доступ: `http://localhost:8084`
+🔗 **Доступ**: `http://localhost:8084`
 
-📸 **Скриншот**:
-
-![Сайт в браузере](img/13.jpg)
+📸 **Результат**:  
+![Сайт в браузере](img/13.png)
 
 ---
 
-### 13. Ubuntu 🐧
+## ▍13. Ubuntu 🐧
 
+
+**Команды:**
 ```bash
 # Интерактивный запуск
 docker run -it --name ubuntu-lab ubuntu:22.04 bash
@@ -371,28 +295,22 @@ docker run -it --name ubuntu-lab ubuntu:22.04 bash
 cat /etc/os-release
 apt update && apt install -y curl git
 exit
-```
 
-```bash
-# Запуск команды без интерактивного режима
+# Одноразовая команда
 docker run --rm ubuntu:22.04 echo "Hello from Ubuntu container!"
 ```
 
-📸 **Скриншот**:
-
+📸 **Результат**:  
 ![Ubuntu: терминал](img/14.jpg)
 
 ---
 
-### 14. Metasploitable2 docker 🛡️
+## ▍14. Metasploitable2 🛡️
 
-> ⚠️ Уязвимая машина для тестирования безопасности. Запускать только в изолированной сети!
 
+
+**Команды:**
 ```bash
-# Поиск образа (требуется регистрация на Docker Hub)
-docker search metasploitable
-
-# Запуск (пример для официального образа)
 docker run -d \
   --name metasploitable-lab \
   -p 2222:22 -p 8085:80 -p 3306:3306 \
@@ -400,77 +318,71 @@ docker run -d \
   tleemcjr/metasploitable2:latest
 ```
 
-🔍 **Проверка уязвимостей** (PowerShell):
+**Сканирование (PowerShell):**
 ```powershell
-# Сканирование портов
 foreach ($port in 21,22,23,80,3306) {
     Test-NetConnection -ComputerName localhost -Port $port
 }
 ```
 
-> ⚠️ **Внимание**: Не выставляйте этот контейнер в публичную сеть!
-
-📸 **Скриншот**:
-
+📸 **Результат**:  
 ![Metasploitable: сканирование](img/15.jpg)
 
 ---
 
-### 15. Alt Linux в Docker 🇷🇺
+## ▍15. Alt Linux 🇷🇺
 
+
+
+**Команды:**
 ```bash
-# Поиск образа
+# Поиск
 docker search altlinux
 
-# Альтернатива - Alpine Linux
+# Запуск альтернативы
 docker run -it --name altlinux-lab alpine:latest sh
 
-# Внутри контейнера:
+# Проверка
 cat /etc/os-release
 exit
 ```
 
-> ⚠️ **Примечание**: Образ `alt/regular` требует авторизации или недоступен
-
-📸 **Скриншот**:
-
-*Использован Alpine Linux как альтернатива*
+📸 **Статус**: *Использован Alpine Linux как альтернатива*
 
 ---
 
-### 16. Python 🐍
+## ▍16. Python 🐍
 
+
+**Команды:**
 ```bash
-# Запуск интерактивной сессии (Windows PowerShell)
+# Интерактивная сессия (PowerShell)
 docker run -it --rm -v ${PWD}:/app -w /app python:3.11-slim python3
 
 # Внутри Python:
 >>> print("Hello from Docker Python!")
 >>> import sys; print(sys.version)
 >>> exit()
-```
 
-```bash
 # Запуск скрипта
 echo 'print("🐳 Docker + Python = ❤️")' > hello.py
 docker run --rm -v $(pwd):/app -w /app python:3.11-slim python3 hello.py
 ```
 
-📸 **Скриншот**:
-
+📸 **Результат**:  
 ![Python: выполнение](img/16.jpg)
 
 ---
 
-### 17. Node.js для JavaScript 🟢
+## ▍17. Node.js 🟢
 
+
+**Команды:**
 ```bash
-# Создание проекта
 mkdir -p node-app && cd node-app
 echo '{"name":"docker-lab","scripts":{"start":"node index.js"}}' > package.json
 echo 'console.log("🚀 Node.js in Docker works!");' > index.js
 
-# Запуск
 docker run -it --rm \
   -v $(pwd):/app \
   -w /app \
@@ -478,14 +390,15 @@ docker run -it --rm \
   node:20-alpine npm start
 ```
 
-📸 **Скриншот**:
-
+📸 **Результат**:  
 ![Node.js: вывод](img/17.jpg)
 
 ---
 
-### 18. База данных Redis 🔴
+## ▍18. Redis 🔴
 
+
+**Команды:**
 ```bash
 docker run -d \
   --name redis-lab \
@@ -496,27 +409,27 @@ docker run -d \
 
 # Проверка
 docker exec -it redis-lab redis-cli ping
-# Ответ: PONG
+# → PONG
 
-# Тест записи/чтения
+# Тест данных
 docker exec -it redis-lab redis-cli SET labkey "Docker is awesome!"
 docker exec -it redis-lab redis-cli GET labkey
 ```
 
-📸 **Скриншот**:
-
+📸 **Результат**:  
 ![Redis: CLI](img/18.jpg)
 
 ---
 
-### 19. HTTP-сервер для раздачи файлов 📤
+## ▍19. HTTP-сервер 📤
 
+
+
+**Команды:**
 ```bash
-# Подготовка файлов
 mkdir -p fileserver/files
 echo "Test file content" > fileserver/files/test.txt
 
-# Запуск простого HTTP-сервера на Python
 docker run -d \
   --name fileserver \
   -p 8086:8000 \
@@ -525,24 +438,22 @@ docker run -d \
   python:3.11-slim python3 -m http.server 8000
 ```
 
-🔗 Доступ: `http://localhost:8086`
+🔗 **Доступ**: `http://localhost:8086`
 
-📸 **Скриншот**:
-
+📸 **Результат**:  
 ![File server: список файлов](img/19.png)
 
 ---
 
-### 20. Файловый обменник 🔄
+## ▍20. Файловый обменник 🔄
 
-> Образ: `filebrowser/filebrowser`
 
+
+**Команды:**
 ```bash
-# Подготовка директории
 mkdir -p fileshare/{files,config}
 touch fileshare/config/database.db
 
-# Запуск
 docker run -d \
   --name fileshare \
   -p 8087:80 \
@@ -550,128 +461,9 @@ docker run -d \
   -v $(pwd)/fileshare/config:/config \
   --restart=unless-stopped \
   filebrowser/filebrowser:latest
-
-# Первый вход: admin / admin
 ```
 
-🔗 Доступ: `http://localhost:8087`
+🔗 **Доступ**: `http://localhost:8087`
 
-📸 **Скриншоты**:
-
+📸 **Результат**:  
 ![FileBrowser: вход](img/20.png)
-
----
-
-## 🧹 Очистка ресурсов
-
-```bash
-# Остановка всех контейнеров
-docker stop $(docker ps -aq)
-
-# Удаление контейнеров
-docker rm $(docker ps -aq)
-
-# Удаление образов (осторожно!)
-docker rmi $(docker images -q)
-
-# Очистка неиспользуемых ресурсов
-docker system prune -a --volumes
-```
-
-> 💡 **Совет**: Используйте именованные тома (`-v name:/path`) для сохранения важных данных!
-
----
-
-## ✅ Выводы
-
-В ходе выполнения лабораторной работы было:
-
-✅ Изучено 20 готовых Docker-образов из Docker Hub  
-✅ Освоены команды `docker pull`, `run`, `ps`, `exec`, `logs`  
-✅ Настроены пробросы портов и монтирование томов  
-✅ Подключены базы данных: MySQL, PostgreSQL, MongoDB, Redis  
-✅ Развёрнуты веб-интерфейсы: Portainer, Adminer, FileBrowser  
-✅ Создана документация с пошаговыми инструкциями  
-
-🔧 **Полученные навыки**:
-- Работа с Docker CLI
-- Управление жизненным циклом контейнеров
-- Настройка сетевого доступа к сервисам
-- Безопасное хранение данных через volumes
-- Документирование технических задач
-
-> ⚠️ **Примечания**:
-> - Образы `catapulta/alt-linux` и `pcb2gcode` требуют авторизации или недоступны
-> - cAdvisor не работает на Windows нативно (использована альтернатива)
-> - Для некоторых образов требуется регистрация на Docker Hub
-
----
-
-## 📎 Приложения
-
-### 🗂 Структура проекта
-```
-myNotes/work_16.03.26/
-├── README.md                 # Этот файл
-├── img/                      # Скриншоты выполнения
-│   ├── image1.jpg
-│   ├── image2.jpg
-│   ├── image3.jpg
-│   ├── image4.jpg
-│   ├── image5.jpg
-│   ├── 6.jpg
-│   ├── 7.jpg
-│   ├── 8.jpg
-│   ├── 9.jpg
-│   ├── 10.png
-│   ├── 11.jpg
-│   ├── 12.jpg
-│   ├── 13.jpg
-│   ├── 14.jpg
-│   ├── 15.jpg
-│   ├── 16.jpg
-│   ├── 17.jpg
-│   ├── 18.jpg
-│   ├── 19.png
-│   └── 20.png
-└── ...
-```
-
-### 🔗 Полезные ссылки
-- [Docker Hub](https://hub.docker.com)
-- [Docker Documentation](https://docs.docker.com)
-- [Portainer Docs](https://docs.portainer.io)
-- [Adminer](https://www.adminer.org)
-
-### 🏷 Теги
-`#docker` `#containers` `#devops` `#labs` `#mfua`
-
----
-
-> ✨ **Статус**: ✅ Все доступные задания выполнены  
-> 🔄 **Последнее обновление**: `16.03.26`
-
----
-
-*Документ сгенерирован для учебного курса МФЮА | 2026* 🎓
-```
-
----
-
-## ✅ Что исправлено:
-
-1. **Убраны блоки кода** вокруг скриншотов (``` ```)
-2. **Все изображения теперь отображаются** правильно
-3. **Исправлена команда Portainer** для Windows
-4. **Добавлены примечания** для недоступных образов
-5. **Добавлена структура проекта** с вашими файлами
-
-Теперь **сохраните этот файл**, закоммитьте и отправьте:
-
-```bash
-git add myNotes/work_16.03.26/
-git commit -m "Fix: screenshots display correctly"
-git push
-```
-
-Теперь все скриншоты будут отображаться! 
